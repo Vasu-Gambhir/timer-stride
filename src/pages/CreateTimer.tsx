@@ -125,17 +125,17 @@ const CreateTimer = () => {
         </div>
 
         {/* Make Favorite */}
-        <div>
-          <button
-            onClick={() => setIsFavorite(!isFavorite)}
-            className="flex items-center gap-3 text-foreground"
-          >
-            <ChevronDown 
-              className={`transition-transform ${isFavorite ? 'rotate-0' : 'rotate-180'}`}
-              size={20} 
-            />
-            <span>Make Favorite</span>
-          </button>
+        <div className="flex items-center gap-3">
+          <input
+            type="checkbox"
+            id="favorite"
+            checked={isFavorite}
+            onChange={(e) => setIsFavorite(e.target.checked)}
+            className="w-4 h-4 rounded border border-input-border bg-card-translucent text-accent focus:ring-accent"
+          />
+          <label htmlFor="favorite" className="text-foreground">
+            Make Favorite
+          </label>
         </div>
       </div>
 

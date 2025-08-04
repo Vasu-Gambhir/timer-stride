@@ -88,7 +88,7 @@ const timerSlice = createSlice({
           if (activeTimer && activeTimer.status === 'running') {
             activeTimer.status = 'paused';
             if (activeTimer.startTime) {
-              activeTimer.elapsedTime += Date.now() - activeTimer.startTime;
+              activeTimer.elapsedTime += Math.floor((Date.now() - activeTimer.startTime) / 1000);
             }
             activeTimer.startTime = null;
           }
@@ -106,7 +106,7 @@ const timerSlice = createSlice({
       
       if (timer && timer.status === 'running' && timer.startTime) {
         timer.status = 'paused';
-        timer.elapsedTime += Date.now() - timer.startTime;
+        timer.elapsedTime += Math.floor((Date.now() - timer.startTime) / 1000);
         timer.startTime = null;
         
         if (state.activeTimerId === timerId) {
@@ -121,12 +121,27 @@ const timerSlice = createSlice({
       
       if (timer) {
         if (timer.status === 'running' && timer.startTime) {
-          timer.elapsedTime += Date.now() - timer.startTime;
+          timer.elapsedTime += Math.floor((Date.now() - timer.startTime) / 1000);
         }
         
         timer.status = 'stopped';
         timer.startTime = null;
         timer.completedAt = Date.now();
+        
+        if (state.activeTimerId === timerId) {
+          state.activeTimerId = null;
+        }
+      }
+    },
+    
+    clearTimer: (state, action: PayloadAction<string>) => {
+      const timerId = action.payload;
+      const timer = state.timers.find(t => t.id === timerId);
+      
+      if (timer) {
+        timer.status = 'stopped';
+        timer.startTime = null;
+        timer.elapsedTime = 0;
         
         if (state.activeTimerId === timerId) {
           state.activeTimerId = null;
@@ -159,6 +174,7 @@ export const {
   startTimer,
   pauseTimer,
   stopTimer,
+  clearTimer,
   updateTimerElapsed,
   toggleFavorite,
 } = timerSlice.actions;

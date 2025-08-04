@@ -2,12 +2,26 @@ import { Plus, ArrowUpDown } from 'lucide-react';
 import { useAppSelector } from '../hooks/redux';
 import { TimerCard } from '../components/TimerCard';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const TimersList = () => {
   const navigate = useNavigate();
   const { timers, projects, tasks } = useAppSelector((state) => state.timer);
 
-  const activeTimers = timers.filter(timer => timer.status !== 'stopped');
+  const [activeTab, setActiveTab] = useState('odoo');
+  
+  const getFilteredTimers = () => {
+    switch (activeTab) {
+      case 'favorites':
+        return timers.filter(timer => timer.isFavorite);
+      case 'local':
+        return timers.filter(timer => timer.status === 'stopped');
+      default:
+        return timers.filter(timer => timer.status !== 'stopped');
+    }
+  };
+  
+  const filteredTimers = getFilteredTimers();
 
   return (
     <div className="min-h-screen bg-gradient-primary">
@@ -30,22 +44,37 @@ const TimersList = () => {
       {/* Tabs */}
       <div className="flex px-4 mb-6">
         <div className="flex gap-8">
-          <button className="text-white text-sm pb-2">Favorites</button>
-          <button className="text-white text-sm pb-2 border-b-2 border-white">Odoo</button>
-          <button className="text-white text-sm pb-2">Local</button>
+          <button 
+            onClick={() => setActiveTab('favorites')}
+            className={`text-white text-sm pb-2 ${activeTab === 'favorites' ? 'border-b-2 border-white' : ''}`}
+          >
+            Favorites
+          </button>
+          <button 
+            onClick={() => setActiveTab('odoo')}
+            className={`text-white text-sm pb-2 ${activeTab === 'odoo' ? 'border-b-2 border-white' : ''}`}
+          >
+            Odoo
+          </button>
+          <button 
+            onClick={() => setActiveTab('local')}
+            className={`text-white text-sm pb-2 ${activeTab === 'local' ? 'border-b-2 border-white' : ''}`}
+          >
+            Local
+          </button>
         </div>
       </div>
 
       {/* Timer Count */}
       <div className="px-4 mb-4">
         <p className="text-white/80 text-sm">
-          You have {activeTimers.length} Timer{activeTimers.length !== 1 ? 's' : ''}
+          You have {filteredTimers.length} Timer{filteredTimers.length !== 1 ? 's' : ''}
         </p>
       </div>
 
       {/* Timers List */}
       <div className="px-4">
-        {activeTimers.map((timer) => {
+        {filteredTimers.map((timer) => {
           const project = projects.find(p => p.id === timer.projectId);
           const task = tasks.find(t => t.id === timer.taskId);
           
@@ -61,9 +90,12 @@ const TimersList = () => {
           );
         })}
         
-        {activeTimers.length === 0 && (
+        {filteredTimers.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-white/60">No active timers</p>
+            <p className="text-white/60">
+              {activeTab === 'favorites' ? 'No favorite timers' : 
+               activeTab === 'local' ? 'No completed timers' : 'No active timers'}
+            </p>
             <button 
               onClick={() => navigate('/create')}
               className="mt-4 px-6 py-2 bg-white/20 text-white rounded-xl"
