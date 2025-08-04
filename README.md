@@ -2,6 +2,7 @@
 
 **Timer-Stride** is a feature-rich timer management application built using React, Redux, TypeScript, Tailwind CSS, and React Router. It is designed to closely match a Figma-based UI while implementing a robust and user-friendly timer system.
 
+**Deployed URL** - [https://timer-stride.vercel.app/](https://timer-stride.vercel.app/)
 ---
 
 ## ✨ Features
@@ -59,7 +60,7 @@
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/timer-stride.git
+   git clone https://github.com/Vasu-Gambhir/timer-stride.git
    cd timer-stride
    ```
 
@@ -75,7 +76,7 @@
    npm run dev
    ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
+4. Open [http://localhost:8080](http://localhost:8080) in your browser
 
 ---
 
