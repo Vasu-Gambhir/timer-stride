@@ -68,9 +68,7 @@ This project was developed with assistance from Lovable AI and OpenAI’s ChatGP
 
 The AI was used to:
 
-- Architect the entire app structure
-- Guide TypeScript integration and Redux logic
-- Assist in implementing localStorage persistence
+- Architect the app structure
 - Generate Tailwind CSS-based UI to match Figma pixel-perfectly
 - Write this documentation
 
