@@ -9,6 +9,7 @@ import TimersList from "./pages/TimersList";
 import CreateTimer from "./pages/CreateTimer";
 import TaskDetails from "./pages/TaskDetails";
 import NotFound from "./pages/NotFound";
+import LocalStorageSync from "./components/LocalStorageSync";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
   <Provider store={store}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <LocalStorageSync />
         <Toaster />
         <Sonner />
         <BrowserRouter>

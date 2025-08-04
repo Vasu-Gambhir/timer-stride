@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# ⏱️ Timer-Stride
 
-## Project info
+**Timer-Stride** is a feature-rich timer management application built using React, Redux, TypeScript, Tailwind CSS, and React Router. It is designed to closely match a Figma-based UI while implementing a robust and user-friendly timer system.
 
-**URL**: https://lovable.dev/projects/6c38cac0-c077-4de8-8e5c-f4cc899f76b3
+---
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+### ✅ Core Features
 
-**Use Lovable**
+- **Timers List Screen**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6c38cac0-c077-4de8-8e5c-f4cc899f76b3) and start prompting.
+  - Displays a dynamic list of timers
+  - Play/Pause individual timers with real-time updates
+  - Clear or Stop specific timers
+  - UI exactly as per Figma
+  - Tabs for viewing favorites, active, and local (completed) timers
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Create Timer Screen**
 
-**Use your preferred IDE**
+  - Form to create a new timer
+  - Dropdowns for selecting project and task
+  - Text input for description
+  - Checkbox for marking as favorite
+  - On submission, user is redirected back to timers list
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Task Details Screen**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+  - View task info (e.g., assigned user, deadline)
+  - Timesheets tab for running timer details
+  - Controls for Play, Pause, and Stop with live updates
+  - Updates are reflected across all views
 
-Follow these steps:
+- **State Synchronization**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+  - Timers managed using Redux
+  - Bidirectional updates across components
+  - Timers can be favorited/unfavorited in real-time
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **Data Persistence**
 
-# Step 3: Install the necessary dependencies.
-npm i
+  - Timer data is persisted in `localStorage`
+  - Timers survive page reloads
+  - Only cleared manually using per-timer "Clear" buttons
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+- **Theme & Design**
 
-**Edit a file directly in GitHub**
+  - Tailwind CSS used with a custom theme based on [Figma Design System]
+  - Fully responsive, pixel-perfect match with Figma mockups
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Deep Linking & Routing**
+  - Pages accessible via URL
+  - Proper routes for list, creation, and task detail screens
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## ⚙️ Setup Instructions
 
-## What technologies are used for this project?
+1. **Clone the repository**
 
-This project is built with:
+   ```bash
+   git clone https://github.com/your-username/timer-stride.git
+   cd timer-stride
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. **Install dependencies**
 
-## How can I deploy this project?
+   ```bash
+   npm install
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/6c38cac0-c077-4de8-8e5c-f4cc899f76b3) and click on Share -> Publish.
+3. **Run the development server**
 
-## Can I connect a custom domain to my Lovable project?
+   ```bash
+   npm run dev
+   ```
 
-Yes, you can!
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🤖 AI Tool Usage
+
+See [AI_USAGE.md](./AI_USAGE.md) for a detailed breakdown.
+
+---
+
+## 👤 Author
+
+Developed and maintained by **Vasu Gambhir**  
+Built with ❤️ using modern frontend technologies
+
+---
