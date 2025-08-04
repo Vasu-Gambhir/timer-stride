@@ -21,11 +21,13 @@ export default {
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
+				'input-border': 'hsl(var(--input-border))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
+					glow: 'hsl(var(--primary-glow))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
@@ -35,6 +37,10 @@ export default {
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
+				},
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
@@ -50,7 +56,13 @@ export default {
 				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
+					translucent: 'hsl(var(--card-translucent))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				timer: {
+					active: 'hsl(var(--timer-active))',
+					paused: 'hsl(var(--timer-paused))',
+					stopped: 'hsl(var(--timer-stopped))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -62,6 +74,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--background-gradient)',
+				'gradient-card': 'linear-gradient(135deg, hsl(var(--card)), hsl(var(--card-translucent)))',
+				'gradient-button': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
